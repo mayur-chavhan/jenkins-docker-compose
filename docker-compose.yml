@@ -12,7 +12,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./jenkins-home:/var/jenkins_home
       - ./jenkins-workspace:/var/jenkins_home/workspace
-      # - ./aws:/var/jenkins_home/.aws:ro
+      # - ./aws:/var/jenkins_home/.aws:ro   # if you have awscli credentials to mount on jenkins_home
+      # Container Timezone from Host Machine
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
 
     ports:
       - "8080:8080"
